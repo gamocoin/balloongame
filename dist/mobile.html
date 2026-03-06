@@ -1,0 +1,740 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="game-708 theme-35 is-Mobile portrait">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Divine Games: First Balloon</title>
+    <meta name="viewport"
+        content="width=device-width,height = device-height, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        html,
+        body,
+        body.sidebars {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+
+            overflow: hidden;
+        }
+
+        body {
+            background: black;
+        }
+
+        canvas {
+            background: #000;
+        }
+    </style>
+    <style>
+        .scroll-to-top {
+            background-color: white;
+            right: 40px;
+            bottom: 40px;
+            position: fixed;
+            z-index: 2;
+            cursor: pointer;
+            border-radius: 7px;
+            width: 40px;
+            height: 40px;
+            box-shadow: 0 9px 25px 0 rgba(132, 128, 177, 0.28);
+            border: none;
+        }
+
+        .scroll-to-top:active {
+            transform: matrix(0.95, 0, 0, 0.95, 0, 0);
+        }
+    </style>
+    <!-- <link rel="stylesheet" href="styles/942.b113de86.chunk.css"> -->
+
+  <script type="module" crossorigin src="/assets/mobile-DPWwmcc5.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/index-CSfxaEzb.js">
+  <link rel="stylesheet" crossorigin href="/assets/index-D8vNHSAc.css">
+  <link rel="stylesheet" crossorigin href="/assets/mobile-C6Pdim7d.css">
+</head>
+
+<body>
+
+    <div id="crash-games">
+        <div class="main-wrapper">
+            <div class="last-statistics-popup-layer hidden" id="historyPopup">
+                <div class="last-statistics-popup">
+                    <p class="last-statistics-popup-title">Last 500 results</p>
+                    <div class="close-popup-btn">
+                        <i class="fa-solid fa-xmark" style="font-size: x-large;" id="close-history-icon"></i>
+                    </div>
+                    <ul class="last-statistics-list">
+                        <li class="last-statistics-list-item">
+                            <div class="last-statistics-round-item orange">x3.81</div>
+                            <p class="last-statistics-round">R1452701</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="crashplay-layout-mobile-ls">
+                <div class="crashplay-layout-mobile-content-ls">
+                    <div class="user-info">
+                        <div class="balance-text">
+                            <div class="user-id">Balance</div>
+                            <b class="balance-text amount">₹0.00</b>
+                        </div>
+                        <div class="userInfoSettings">
+                            <div class="settingsHolder">
+                                <div class="settingsButton" id="menu-btn">
+                                    <i class="settingButtonIcon fa-solid fa-bars" id="menu-icon"></i>
+                                </div>
+                                <div class="settingsContentHolder hidden" id="menu-holder">
+                                    <div class="settingsContent" id="menu-list">
+                                        <div class="settingsContentHead">
+                                            <div class="settingsContentHeadColumn">
+                                                <div class="settingsContentAvatarHolder">
+                                                    <div class="avatar medium">
+                                                        <img src="/images/avatars/0.png" alt="avatar" class="avatarImg">
+                                                    </div>
+                                                    <div class="changeAvatarButton" id="change-avatar">
+                                                        <i class="fa-solid fa-camera"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="settingsContentHeadChange">
+                                                    <div class="changeUsernameInputHolder">
+                                                        <div class="changeUsernameInputColumn">
+                                                            <input type="text" class="changeUsernameInput" disabled=""
+                                                                placeholder="User_698132" value="">
+                                                        </div>
+                                                        <button class="changeUsernameButton">
+                                                            <i class="fa-solid fa-house"></i>
+                                                            <!-- INSERT THE LINK TO GO TO LOBBY -->
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="settingsContentBody">
+                                            <div class="settingsContentBodyTitle">
+                                                <div class="settingsRow">
+                                                    <div class="settingsRowColumn">
+                                                        <i class="settingsRowIcon fa-solid fa-volume-xmark"
+                                                            id="vol-icon"></i>
+                                                        <span class="settingsRowName truncate">Sound</span>
+                                                    </div>
+                                                    <div class="forOtherGames switcher" id="sound-switch"></div>
+                                                </div>
+                                            </div>
+                                            <div class="settingsRow hasHover">
+                                                <div class="settingsRowColumn history">
+                                                    <i class="settingsRowIcon fa-solid fa-clock-rotate-left"></i>
+                                                    <span class="settingsRowName truncate">history</span>
+                                                </div>
+                                            </div>
+                                            <div class="settingsRow hasHover">
+                                                <div class="settingsRowColumn fairness">
+                                                    <i class=" settingsRowIcon fa-solid fa-scale-balanced"></i>
+                                                    <span class="settingsRowName truncate">fairness</span>
+                                                </div>
+                                            </div>
+                                            <div class="settingsRow hasHover" id="game-rules">
+                                                <div class="settingsRowColumn">
+                                                    <i class="settingsRowIcon fa-solid fa-file-lines"></i>
+                                                    <span class="settingsRowName truncate">Game Rules</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="newPopupHolder avatarPopupHolder hidden" id="avatar-holder">
+                                    <div class="newPopupContent">
+                                        <div class="newPopupHead">
+                                            <h3 class="newPopupTitle">choose avatar</h3>
+                                            <div class="newPopupCloseButton" id="close-avatar-holder">
+                                                <i class="fa-solid fa-xmark"></i>
+                                            </div>
+                                        </div>
+                                        <div class="newPopupSection">
+                                            <div class="scrollableContainer">
+                                                <div class="avatarPopupItems">
+                                                    <div class="avatarPopupItem">
+                                                        <div class="avatar big"><img src="/images/avatars/1.png"
+                                                                alt="avatar" class="avatarImg">
+                                                        </div>
+                                                    </div>
+                                                    <div class="avatarPopupItem">
+                                                        <div class="avatar big"><img src="/images/avatars/2.png"
+                                                                alt="avatar" class="avatarImg">
+                                                        </div>
+                                                    </div>
+                                                    <div class="avatarPopupItem">
+                                                        <div class="avatar big"><img src="/images/avatars/3.png"
+                                                                alt="avatar" class="avatarImg">
+                                                        </div>
+                                                    </div>
+                                                    <div class="avatarPopupItem">
+                                                        <div class="avatar big"><img src="/images/avatars/4.png"
+                                                                alt="avatar" class="avatarImg">
+                                                        </div>
+                                                    </div>
+                                                    <div class="avatarPopupItem">
+                                                        <div class="avatar big"><img src="/images/avatars/5.png"
+                                                                alt="avatar" class="avatarImg">
+                                                        </div>
+                                                    </div>
+                                                    <div class="avatarPopupItem">
+                                                        <div class="avatar big"><img src="/images/avatars/6.png"
+                                                                alt="avatar" class="avatarImg">
+                                                        </div>
+                                                    </div>
+                                                    <div class="avatarPopupItem">
+                                                        <div class="avatar big"><img src="/images/avatars/7.png"
+                                                                alt="avatar" class="avatarImg">
+                                                        </div>
+                                                    </div>
+                                                    <div class="avatarPopupItem">
+                                                        <div class="avatar big"><img src="/images/avatars/8.png"
+                                                                alt="avatar" class="avatarImg">
+                                                        </div>
+                                                    </div>
+                                                    <div class="avatarPopupItem">
+                                                        <div class="avatar big"><img src="/images/avatars/9.png"
+                                                                alt="avatar" class="avatarImg">
+                                                        </div>
+                                                    </div>
+                                                    <div class="avatarPopupItem">
+                                                        <div class="avatar big"><img src="/images/avatars/10.png"
+                                                                alt="avatar" class="avatarImg">
+                                                        </div>
+                                                    </div>
+                                                    <div class="avatarPopupItem">
+                                                        <div class="avatar big"><img src="/images/avatars/11.png"
+                                                                alt="avatar" class="avatarImg">
+                                                        </div>
+                                                    </div>
+                                                    <div class="avatarPopupItem">
+                                                        <div class="avatar big"><img src="/images/avatars/12.png"
+                                                                alt="avatar" class="avatarImg">
+                                                        </div>
+                                                    </div>
+                                                    <div class="avatarPopupItem">
+                                                        <div class="avatar big"><img src="/images/avatars/13.png"
+                                                                alt="avatar" class="avatarImg">
+                                                        </div>
+                                                    </div>
+                                                    <div class="avatarPopupItem">
+                                                        <div class="avatar big"><img src="/images/avatars/14.png"
+                                                                alt="avatar" class="avatarImg">
+                                                        </div>
+                                                    </div>
+                                                    <div class="avatarPopupItem">
+                                                        <div class="avatar big"><img src="/images/avatars/15.png"
+                                                                alt="avatar" class="avatarImg">
+                                                        </div>
+                                                    </div>
+                                                    <div class="avatarPopupItem">
+                                                        <div class="avatar big"><img src="/images/avatars/16.png"
+                                                                alt="avatar" class="avatarImg">
+                                                        </div>
+                                                    </div>
+                                                    <div class="avatarPopupItem">
+                                                        <div class="avatar big"><img src="/images/avatars/17.png"
+                                                                alt="avatar" class="avatarImg">
+                                                        </div>
+                                                    </div>
+                                                    <div class="avatarPopupItem">
+                                                        <div class="avatar big"><img src="/images/avatars/18.png"
+                                                                alt="avatar" class="avatarImg">
+                                                        </div>
+                                                    </div>
+                                                    <div class="avatarPopupItem">
+                                                        <div class="avatar big"><img src="/images/avatars/19.png"
+                                                                alt="avatar" class="avatarImg">
+                                                        </div>
+                                                    </div>
+                                                    <div class="avatarPopupItem">
+                                                        <div class="avatar big"><img src="/images/avatars/20.png"
+                                                                alt="avatar" class="avatarImg">
+                                                        </div>
+                                                    </div>
+                                                    <div class="avatarPopupItem">
+                                                        <div class="avatar big"><img src="/images/avatars/21.png"
+                                                                alt="avatar" class="avatarImg">
+                                                        </div>
+                                                    </div>
+                                                    <div class="avatarPopupItem">
+                                                        <div class="avatar big"><img src="/images/avatars/22.png"
+                                                                alt="avatar" class="avatarImg">
+                                                        </div>
+                                                    </div>
+                                                    <div class="avatarPopupItem">
+                                                        <div class="avatar big"><img src="/images/avatars/23.png"
+                                                                alt="avatar" class="avatarImg">
+                                                        </div>
+                                                    </div>
+                                                    <div class="avatarPopupItem">
+                                                        <div class="avatar big"><img src="/images/avatars/24.png"
+                                                                alt="avatar" class="avatarImg">
+                                                        </div>
+                                                    </div>
+                                                    <div class="avatarPopupItem">
+                                                        <div class="avatar big"><img src="/images/avatars/25.png"
+                                                                alt="avatar" class="avatarImg">
+                                                        </div>
+                                                    </div>
+                                                    <div class="avatarPopupItem">
+                                                        <div class="avatar big"><img src="/images/avatars/26.png"
+                                                                alt="avatar" class="avatarImg">
+                                                        </div>
+                                                    </div>
+                                                    <div class="avatarPopupItem">
+                                                        <div class="avatar big"><img src="/images/avatars/27.png"
+                                                                alt="avatar" class="avatarImg">
+                                                        </div>
+                                                    </div>
+                                                    <div class="avatarPopupItem">
+                                                        <div class="avatar big"><img src="/images/avatars/28.png"
+                                                                alt="avatar" class="avatarImg">
+                                                        </div>
+                                                    </div>
+                                                    <div class="avatarPopupItem">
+                                                        <div class="avatar big"><img src="/images/avatars/29.png"
+                                                                alt="avatar" class="avatarImg">
+                                                        </div>
+                                                    </div>
+                                                    <div class="avatarPopupItem">
+                                                        <div class="avatar big"><img src="/images/avatars/30.png"
+                                                                alt="avatar" class="avatarImg">
+                                                        </div>
+                                                    </div>
+                                                    <div class="avatarPopupItem">
+                                                        <div class="avatar big"><img src="/images/avatars/31.png"
+                                                                alt="avatar" class="avatarImg">
+                                                        </div>
+                                                    </div>
+                                                    <div class="avatarPopupItem">
+                                                        <div class="avatar big"><img src="/images/avatars/32.png"
+                                                                alt="avatar" class="avatarImg">
+                                                        </div>
+                                                    </div>
+                                                    <div class="avatarPopupItem">
+                                                        <div class="avatar big"><img src="/images/avatars/33.png"
+                                                                alt="avatar" class="avatarImg">
+                                                        </div>
+                                                    </div>
+                                                    <div class="avatarPopupItem">
+                                                        <div class="avatar big"><img src="/images/avatars/34.png"
+                                                                alt="avatar" class="avatarImg">
+                                                        </div>
+                                                    </div>
+                                                    <div class="avatarPopupItem">
+                                                        <div class="avatar big"><img src="/images/avatars/35.png"
+                                                                alt="avatar" class="avatarImg">
+                                                        </div>
+                                                    </div>
+                                                    <div class="avatarPopupItem">
+                                                        <div class="avatar big"><img src="/images/avatars/36.png"
+                                                                alt="avatar" class="avatarImg">
+                                                        </div>
+                                                    </div>
+                                                    <div class="avatarPopupItem">
+                                                        <div class="avatar big"><img src="/images/avatars/37.png"
+                                                                alt="avatar" class="avatarImg">
+                                                        </div>
+                                                    </div>
+                                                    <div class="avatarPopupItem">
+                                                        <div class="avatar big"><img src="/images/avatars/38.png"
+                                                                alt="avatar" class="avatarImg">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="crashplay-game">
+                        <div class="logo-block">
+                            <img src="images/firstBalloon.2c6563e67c90c87c0aa1.png" alt="Logo">
+                        </div>
+                        <div class="allCashOutUsersHolder"></div>
+                        <span class="crush-counting-info-text  counter hidden"></span>
+                        <span class="crush-counting-info-text crash-result centered hidden"></span>
+                        <div class="red-hot-line-timer-layer">
+                            <div class="red-hot-line-timer">
+                                <div class="red-hot-line-timer-thumbs">
+                                    <span class="thumb-item"></span>
+                                    <span class="thumb-item inactive"></span>
+                                    <span class="thumb-item"></span>
+                                    <span class="thumb-item"></span>
+                                    <span class="thumb-item"></span>
+                                    <span class="thumb-item"></span>
+                                    <span class="thumb-item"></span>
+                                    <span class="thumb-item"></span>
+                                    <span class="thumb-item"></span>
+                                    <span class="thumb-item"></span>
+                                    <span class="thumb-item"></span>
+                                    <span class="thumb-item"></span>
+                                    <p class="red-hot-line-timer-count"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="crashplay-game-container-canvas" id="canvas-container">
+                        </div>
+                        <div class="game-notification-wrapper"></div>
+                    </div>
+                    <div class="crashplay-layout-mobile-stats-ls">
+                        <div class="bets-scores">
+                            <div data-round="1449848" class="bets-scores-item orange">x5.16</div>
+                            <div data-round="1449847" class="bets-scores-item orange">x16.07</div>
+                            <div data-round="1449846" class="bets-scores-item orange">x16.95</div>
+                            <div data-round="1449845" class="bets-scores-item">x1.46</div>
+                            <div data-round="1449844" class="bets-scores-item orange">x14.24</div>
+                            <div data-round="1449843" class="bets-scores-item">x1.22</div>
+                            <div data-round="1449842" class="bets-scores-item blue">x53.59</div>
+                            <div data-round="1449841" class="bets-scores-item orange">x4.12</div>
+                            <div data-round="1449840" class="bets-scores-item blue">x39.73</div>
+                            <div data-round="1449839" class="bets-scores-item orange">x2.32</div>
+                            <div data-round="1449838" class="bets-scores-item orange">x2.88</div>
+                            <div data-round="1449837" class="bets-scores-item orange">x3.97</div>
+                            <div data-round="1449836" class="bets-scores-item">x1.55</div>
+                            <div data-round="1449835" class="bets-scores-item orange">x6.12</div>
+                            <div data-round="1449834" class="bets-scores-item">x1.85</div>
+                            <div data-round="1449833" class="bets-scores-item orange">x2.76</div>
+                            <div data-round="1449832" class="bets-scores-item">x1.22</div>
+                            <div data-round="1449831" class="bets-scores-item">x1.04</div>
+                            <div data-round="1449830" class="bets-scores-item">x1.23</div>
+                            <div data-round="1449829" class="bets-scores-item">x1.82</div>
+                        </div>
+                        <div class="statistics-area">
+                            <div class="statistics-navigation" id="prev-history">
+                                <span class="statistics-text">Previous</span>
+                                <i class="statistics-img fa-solid fa-clock-rotate-left"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bet-section-holder">
+                        <div class="bets-actions">
+                            <div class="bets-actions-betting-form left" data-input-wrapper="true">
+                                <div class="bets-actions-betting-range left">
+                                    <div class="bets-amount-input-wrapper">
+                                        <div class="bets-btn-icon" id="decrement-bet-amt-left" data-action="decrement">
+                                            <span>-</span>
+                                        </div>
+                                        <div class="bets-amount-input-label">
+                                            <input class="bets-amount-input text-center" id="bet-amount-left"
+                                                inputmode="decimal" data-mobile-numpad="true" type="number" value="10">
+                                        </div>
+                                        <div class="bets-btn-icon " id="increment-bet-amt-left" data-action="increment">
+                                            <span>+</span>
+                                        </div>
+                                        <div class="bets-btn-icon reset" id="reset-bet-amt-left" data-action="reset"
+                                            style="margin-left: 5px; font-size: small;">
+                                            <span><i class="fa-solid fa-arrow-rotate-left"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="bets-action-suggestion">
+                                        <div class="bet-suggestion-item" id="ten-left">10</div>
+                                        <div class="bet-suggestion-item" id="fifty-left">50</div>
+                                        <div class="bet-suggestion-item" id="hundred-left">100</div>
+                                        <div class="bet-suggestion-item" id="five-hundred-left">500</div>
+                                    </div>
+                                </div>
+                                <div class="bets-actions-betting-form-bottom">
+                                    <div class="betActionsInner left">
+                                        <button class="primary-btn left start">
+                                            <span class="">Bet</span>
+                                        </button>
+                                        <button class="primary-btn left next start hidden">
+                                            <span class="">Next Bet</span>
+                                        </button>
+                                        <button class="primary-btn left cashout hidden">
+                                            <span class="only-child">Cash out</span>
+                                            <p class="primary-btn-text" id="left_cashout_amt">1.00</p>
+                                        </button>
+                                        <button class="primary-btn left cancel hidden">
+                                            <span class="">cancel</span>
+                                        </button>
+                                        <button class="primary-btn left wait hidden" disabled="">
+                                            <span class="">wait</span>
+                                        </button>
+                                    </div>
+                                    <div class="bets-cashout-action left">
+                                        <div class="bets-cashout-action-text">
+                                            <span>x </span>
+                                            <input class="bets-cashout-input left" inputmode="decimal"
+                                                data-mobile-numpad="true" type="number" value="0">
+                                        </div>
+                                        <div class="add-bet-icon" id="auto-bet-icon-left">
+                                            <i class="fa-solid fa-repeat"></i>
+                                        </div>
+                                        <div class="add-bet-icon " style="display: none;"
+                                            id="autobet-count-holder-left">
+                                            10
+                                        </div>
+                                        <div class="bets-cashout-action-check left disabled">
+                                            <div class="check-indicator left"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bets-popup hidden" id="auto-bet-popup-left">
+                                    <div class="bets-popup-heading">
+                                        <span class="betsPopupName">Round</span>
+                                        <i class="fa-solid fa-xmark" id="close-autobet-popup-left"
+                                            style="cursor: pointer;"></i>
+                                    </div>
+                                    <div class="betTotalRow">
+                                        <div class="betTotalRowColumn">
+                                            <span class="betTotalRowText">Bet:</span>
+                                            <span class="betTotalRowText money" id="autobet-amt-left">10.00֏</span>
+                                        </div>
+                                        <div class="betTotalRowColumn">
+                                            <span class="betTotalRowText">TOTAL: </span>
+                                            <span class="betTotalRowText money" id="total-amt-bet-left">0.00֏</span>
+                                        </div>
+                                    </div>
+                                    <div class="bets-mobile-suggestion">
+                                        <div class="bet-mobile-item left" data-value="5">5</div>
+                                        <div class="bet-mobile-item left" data-value="10">10</div>
+                                        <div class="bet-mobile-item left" data-value="20">20</div>
+                                        <div class="bet-mobile-item left" data-value="50">50</div>
+                                        <div class="bet-mobile-item left" data-value="100">100</div>
+                                        <div class="bet-mobile-item left buttonItem" id="autobet-ok-left">Ok</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bets-actions-betting-form right" data-input-wrapper="true">
+                                <div class="bets-actions-betting-range right">
+                                    <div class="bets-amount-input-wrapper">
+                                        <div class="bets-btn-icon" id="decrement-bet-amt-right" data-action="decrement">
+                                            <span>-</span>
+                                        </div>
+                                        <div class="bets-amount-input-label">
+                                            <input class="bets-amount-input text-center" id="bet-amount-right"
+                                                inputmode="decimal" data-mobile-numpad="true" type="number" value="10">
+                                        </div>
+                                        <div class="bets-btn-icon decrease" id="increment-bet-amt-right"
+                                            data-action="increment">
+                                            <span>+</span>
+                                        </div>
+                                        <div class="bets-btn-icon reset" id="reset-bet-amt-right" data-action="reset"
+                                            style="margin-left: 5px; font-size: small;">
+                                            <span><i class="fa-solid fa-arrow-rotate-left"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="bets-action-suggestion">
+                                        <div class="bet-suggestion-item" id="ten-right">10</div>
+                                        <div class="bet-suggestion-item" id="fifty-right">50</div>
+                                        <div class="bet-suggestion-item" id="hundred-right">100</div>
+                                        <div class="bet-suggestion-item" id="five-hundred-right">500</div>
+                                    </div>
+                                </div>
+                                <div class="bets-actions-betting-form-bottom">
+                                    <div class="betActionsInner right">
+                                        <button class="primary-btn right start">
+                                            <span class="">Bet</span>
+                                        </button>
+                                        <button class="primary-btn right next start hidden">
+                                            <span class="">Next Bet</span>
+                                        </button>
+                                        <button class="primary-btn right cashout hidden">
+                                            <span class="only-child">Cash out</span>
+                                            <p class="primary-btn-text" id="right_cashout_amt">1.00</p>
+                                        </button>
+                                        <button class="primary-btn right cancel hidden">
+                                            <span class="">cancel</span>
+                                        </button>
+                                        <button class="primary-btn right wait hidden" disabled="">
+                                            <span class="">wait</span>
+                                        </button>
+                                    </div>
+                                    <div class="bets-cashout-action right">
+                                        <div class="bets-cashout-action-text">
+                                            <span>x </span>
+                                            <input class="bets-cashout-input right" inputmode="decimal"
+                                                data-mobile-numpad="true" type="number" value="0">
+                                        </div>
+                                        <div class="add-bet-icon" id="auto-bet-icon-right">
+                                            <i class="fa-solid fa-repeat"></i>
+                                        </div>
+                                        <div class="add-bet-icon " style="display: none;"
+                                            id="autobet-count-holder-right">
+                                            10
+                                        </div>
+                                        <div class="bets-cashout-action-check right disabled">
+                                            <div class="check-indicator right"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bets-popup hidden" id="auto-bet-popup-right">
+                                    <div class="bets-popup-heading">
+                                        <span class="betsPopupName">Round</span>
+                                        <i class="fa-solid fa-xmark" id="close-autobet-popup-right"
+                                            style="cursor: pointer;"></i>
+                                    </div>
+                                    <div class="betTotalRow">
+                                        <div class="betTotalRowColumn">
+                                            <span class="betTotalRowText">Bet:</span>
+                                            <span class="betTotalRowText money" id="autobet-amt-right">10.00֏</span>
+                                        </div>
+                                        <div class="betTotalRowColumn">
+                                            <span class="betTotalRowText">TOTAL: </span>
+                                            <span class="betTotalRowText money" id="total-amt-bet-right">0.00֏</span>
+                                        </div>
+                                    </div>
+                                    <div class="bets-mobile-suggestion">
+                                        <div class="bet-mobile-item right" data-value="5">5</div>
+                                        <div class="bet-mobile-item right" data-value="10">10</div>
+                                        <div class="bet-mobile-item right" data-value="20">20</div>
+                                        <div class="bet-mobile-item right" data-value="50">50</div>
+                                        <div class="bet-mobile-item right" data-value="100">100</div>
+                                        <div class="bet-mobile-item right buttonItem" id="autobet-ok-right">Ok</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="crashplay-layout-mobile-left-ls hidden">
+                        <div class="mobile-panel">
+                            <div class="close-mobile-panel">
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
+                            <div class="bets-info-column">
+                                <div class="bets-tabs-filled">
+                                    <div class="bets-tabs-filled-wrapper">
+                                        <div class="bets-tabs-filled-btn active" data-tab="1">
+                                            <span class="tab-text truncate" title="all bets">all bets</span>
+                                        </div>
+                                        <div class="bets-tabs-filled-btn" data-tab="2">
+                                            <span class="tab-text truncate" title="my bets">my bets</span>
+                                        </div>
+                                        <div class="bets-tabs-filled-btn" data-tab="3">
+                                            <span class="tab-text truncate" title="highest">highest</span>
+                                        </div>
+                                        <!-- <span class="bets-tabs-floating"></span> -->
+                                    </div>
+                                </div>
+                                <div class="bets-panel" data-tab="1">
+                                    <div class="bets-table">
+                                        <div class="bets-table-heading-holder">
+                                            <div class="bets-table-heading">
+                                                <div class="bets-table-col heading-col">Player</div>
+                                                <div class="bets-table-col heading-col">bet</div>
+                                                <div class="bets-table-col heading-col">x</div>
+                                                <div class="bets-table-col heading-col">Win</div>
+                                            </div>
+                                        </div>
+                                        <div class="bets-table-body" id="allBetsTableBody"></div>
+                                    </div>
+                                </div>
+                                <div class="bets-panel hidden" data-tab="2">
+                                    <div class="bets-table">
+                                        <div class="bets-table-heading-holder">
+                                            <div class="bets-table-heading">
+                                                <div class="bets-table-col heading-col">Date</div>
+                                                <div class="bets-table-col heading-col">Bet</div>
+                                                <div class="bets-table-col heading-col">x</div>
+                                                <div class="bets-table-col heading-col">Win</div>
+                                            </div>
+                                        </div>
+                                        <div class="bets-table-body" id="myBetsTableBody"></div>
+                                    </div>
+                                </div>
+                                <div class="bets-panel hidden" data-tab="3">
+                                    <div class="bets-table">
+                                        <div class="bets-table-heading">
+                                            <div class="bets-table-col heading-col">Date</div>
+                                            <div class="bets-table-col heading-col bold count-col">x</div>
+                                            <div class="bets-table-col heading-col hero-color win-col">fairness</div>
+                                        </div>
+                                        <div class="bets-table-body" id="highestTableBody"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="fairness-popup-holder hidden">
+                <div class="fairness-popup-content" style="height: 585px;">
+                    <div class="fairness-popup-head">
+                        <div class="fairness-popup-head-column">
+                            <i class="fairness-popup-head-icon fa-solid fa-circle-info"></i>
+                            <span class="fairness-popup-head-text">Game Rules</span>
+                        </div>
+                        <div class="fairness-popup-head-column close">
+                            <div class="fairness-popup-close">
+                                <i class="fairness-popup-close fa-solid fa-xmark"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fairness-popup-section">
+                        <div class="fairness-popup-section-content">
+                            <div class="fairness-hash-row">
+                                <div class="fairness-hash-row-column htmlContent">
+                                    <p><strong>Description</strong></p>
+                                    <p>Crash is an online game where you can place stakes on a rapidly increasing
+                                        multiplier.&nbsp;</p>
+                                    <p>The objective of the game is to strategically cashout before the multiplier
+                                        crashes.&nbsp;</p>
+                                    <p>If you cashout before the multiplier crashes you receive a payout based on your
+                                        original stake and the final multiplier.</p>
+                                    <p>If the multiplier crashes before you cashout, the stake is lost.</p>
+                                    <p>&nbsp;</p>
+                                    <p><strong>General Information</strong></p>
+                                    <p>Game Type: Crash Game</p>
+                                    <p>The minimum stake is 20.00 ֏</p>
+                                    <p>The maximum stake is 50,000.00 ֏</p>
+                                    <p>Max Exposure: 50000000 ֏ </p>
+                                    <p>RTP: 96%</p>
+                                    <p>Max Multiplier: 10,000x</p>
+                                    <p>&nbsp;</p>
+                                    <p><strong>How to play</strong></p>
+                                    <p>&nbsp;</p>
+                                    <p>Select the stake amount.&nbsp;</p>
+                                    <p>Place the stake before the round starts.</p>
+                                    <p>Watch the multiplier increase.</p>
+                                    <p>Cashout at any time before the multiplier crashes.</p>
+                                    <p>&nbsp;</p>
+                                    <p><strong>Auto</strong></p>
+                                    <p>The game features auto stake and cash-out functionality. Switch on Auto, and
+                                        starting from the next round, stakes will be placed automatically. Switch off
+                                        Auto during the round, the win will be cashed out immediately.&nbsp;<br>For
+                                        cashing out automatically, select your target multiplier and switch on the auto
+                                        cashout.</p>
+                                    <p><strong>Controls</strong></p>
+                                    <p><br>“Start” buttons are used to place stakes.&nbsp;</p>
+                                    <p>“-” “+” or suggested stake amounts can be used to change the stake amount.</p>
+                                    <p>"Sound" button allows you to change the in-game sound settings.</p>
+                                    <p>“History” opens your stake history.</p>
+                                    <p>"Information" button opens the game rules and controls section.</p>
+                                    <p>"Balance" label shows the current balance.</p>
+                                    <p><br><br>&nbsp;</p>
+                                    <p><strong>Game Interruptions</strong><br><br><strong>Game Recovery</strong><br>If
+                                        the game is interrupted due to a loss of connection, the next time the player
+                                        accesses the game, the unfinished game will be automatically resumed at the
+                                        state it was interrupted immediately before the
+                                        interruption.<br><br><strong>Cancelation</strong></p>
+                                    <p>If the game has been canceled independently from the player, the moment of the
+                                        cancelation is considered to be the end of the game. Any funds accumulated will
+                                        be automatically returned to the player.</p>
+                                    <p>In the event of a malfunction, all stakes and wins are void.<br>&nbsp;</p>
+                                    <p>Version: 1.2.89&nbsp;</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>
